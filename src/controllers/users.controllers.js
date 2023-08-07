@@ -8,8 +8,8 @@ export async function getLoggedUser(req, res){
 
         const { rows: [user] } = await getCompleteUserDB(userId)
 
-        res.send(user)
-        
+        res.status(200).send(user)
+
     } catch (error) {
         res.status(500).send(error.message)
     }
