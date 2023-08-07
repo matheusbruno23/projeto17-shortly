@@ -11,5 +11,5 @@ dotenv.config()
 
 
 
-const PORT = 5000 || process.env.PORT
+const PORT = process.env.PORT || 5000
 app.listen(5000, () => console.log(`Running server on ${PORT}`))
