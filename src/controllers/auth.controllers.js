@@ -29,7 +29,7 @@ export async function signIn(req, res){
 
     try {
         const user = await getUserByEmailDB(email)
-        if (!user) return res.sendStatus(401)
+        if (user.rowCount === 0) return res.sendStatus(401)
 
         const correctPassword = bcrypt.compareSync(password , user.rows[0].password)
         if(!correctPassword) return res.sendStatus(401)
