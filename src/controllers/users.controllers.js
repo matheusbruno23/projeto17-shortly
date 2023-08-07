@@ -1,5 +1,4 @@
-import db from "../db/database.connection"
-import pg from "pg"
+import {db} from "../db/database.connection.js"
 
 export async function getLoggedUser(req, res){
 

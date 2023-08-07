@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt"
-import uuid from "uuid"
+import {v4 as uuid} from "uuid"
 import { createUserDB, getUserByEmailDB } from "../repositories/users.repository.js"
 import { createSessionDB } from "../repositories/auth.repository.js"
 
