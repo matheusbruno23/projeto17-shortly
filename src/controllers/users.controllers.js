@@ -16,7 +16,12 @@ export async function getLoggedUser(req, res){
 
 }
 
-export async function getRanking(req, res){
 
+export async function getUserRanking(req, res) {
+    try {
+        const { rows: ranking } = await getRankingDB()
+        res.send(ranking)
+    } catch (err) {
+        res.stats(500).send(err.message)
+    }
 }
-
