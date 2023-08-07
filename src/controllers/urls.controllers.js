@@ -60,8 +60,8 @@ export async function openUrl(req, res){
 
 export async function deleteUrl(req, res){
 
-    const {id} = re.params
-    const {userId} = req.locals
+    const {id} = req.params
+    const {userId} = res.locals
 
     try {
             const url = await getUrlByIdDB(id)
