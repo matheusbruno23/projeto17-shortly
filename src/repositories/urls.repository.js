@@ -1,3 +1,4 @@
+import { func } from "joi";
 import { db } from "../db/database.connection.js";
 
 export function createShortUrlDB(url, shortUrl, userId){
@@ -8,6 +9,10 @@ export function createShortUrlDB(url, shortUrl, userId){
 
 export function getUrlByIdDB(id){
     return db.query(`SELECT id, url, "shortUrl" FROM urls WHERE id=$1;`, [id])
+}
+
+export function getUrlUserByIdDB(id){
+    return db.query(`SELECT "userId" FROM urls WHERE id=$1;`, [id])
 }
 
 export function getUrlByLinkDB(shortUrl){

@@ -1,5 +1,5 @@
 import {customAlphabet} from 'nanoid'
-import { createShortUrlDB, deleteUrlDB, getUrlByIdDB, getUrlByLinkDB, increaseViewsDB } from '../repositories/urls.repository.js'
+import { createShortUrlDB, deleteUrlDB, getUrlByIdDB, getUrlUserByIdDB , getUrlByLinkDB, increaseViewsDB } from '../repositories/urls.repository.js'
 
 const nanoid = customAlphabet('1234567890abcdefgh' , 8)
 
@@ -64,7 +64,7 @@ export async function deleteUrl(req, res){
     const {userId} = res.locals
 
     try {
-            const url = await getUrlByIdDB(id)
+            const url = await getUrlUserByIdDB(id)
             if(url.rowCount === 0) return res.sendStatus(404)
             if(url.rows[0].userId !== userId) return res.sendStatus(401)
             
