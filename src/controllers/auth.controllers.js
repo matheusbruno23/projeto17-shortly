@@ -13,10 +13,9 @@ export async function signUp(req, res){
 
         if(user.rowCount !== 0) return res.sendStatus(409)
 
-        const hash = bcrypt.hashSync(password , 10)
+        const hash = bcrypt.hashSync(password , 8)
 
         await createUserDB(name, email , hash)
-
         res.sendStatus(201)
 
     } catch (error) {
@@ -30,7 +29,7 @@ export async function signIn(req, res){
 
     try {
         const user = await getUserByEmailDB(email)
-        if (user.rowCount === 0) return res.sendStatus(401)
+        if (!user) return res.sendStatus(401)
 
         const correctPassword = bcrypt.compareSync(password , user.rows[0].password)
         if(!correctPassword) return res.sendStatus(401)
