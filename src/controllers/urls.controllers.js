@@ -1,7 +1,7 @@
 import {customAlphabet} from 'nanoid'
 import { createShortUrlDB, getUrlByIdDB, getUrlByLinkDB, increaseViewsDB } from '../repositories/urls.repository.js'
 
-const nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyz' , 10)
+const nanoid = customAlphabet('1234567890abcdefgh' , 8)
 
 
 
@@ -9,7 +9,6 @@ export async function shortUrl(req, res){
 
     const {userId} = res.locals
     const {url} = req.body
-
     const shortUrl = nanoid()
 
         try {
@@ -17,6 +16,7 @@ export async function shortUrl(req, res){
             const result = await createShortUrlDB(url, shortUrl , userId)
 
             res.status(201).send(result.rows[0])
+
         } catch (error) {
             res.status(500).send(error.message)
         }
