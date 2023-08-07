@@ -17,3 +17,7 @@ export function getUrlByLinkDB(shortUrl){
 export function increaseViewsDB(shortUrl){
     return db.query(`UPDATE urls SET "visitCount" = "visitCount" + 1 WHERE "shortUrl";`, [shortUrl])
 }
+
+export function deleteUrlDB(id){
+    return db.query(`DELETE FROM urls WHERE id=$1;`, [id])
+}
