@@ -32,7 +32,7 @@ export async function signIn(req, res){
         const user = await getUserByEmailDB(email)
         if (user.rowCount === 0) return res.sendStatus(401)
 
-        const correctPassword = bcrypt.compare(password , user.rows[0].password)
+        const correctPassword = bcrypt.compareSync(password , user.rows[0].password)
         if(!correctPassword) return res.sendStatus(401)
 
         const token = uuid()
