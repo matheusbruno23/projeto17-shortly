@@ -1,4 +1,3 @@
-import { func } from "joi";
 import { db } from "../db/database.connection.js";
 
 export function createShortUrlDB(url, shortUrl, userId){
