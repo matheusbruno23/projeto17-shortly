@@ -11,11 +11,11 @@ export function getUrlByIdDB(id){
 }
 
 export function getUrlByLinkDB(shortUrl){
-    return db.query(`SELECT url FROM urls WHERE "shortUrl"=%1;`, [shortUrl])
+    return db.query(`SELECT url FROM urls WHERE "shortUrl"=$1;`, [shortUrl])
 }
 
 export function increaseViewsDB(shortUrl){
-    return db.query(`UPDATE urls SET "visitCount" = "visitCount" + 1 WHERE "shortUrl";`, [shortUrl])
+    return db.query(`UPDATE urls SET "visitCount" = "visitCount" + 1 WHERE "shortUrl"=$1;`, [shortUrl])
 }
 
 export function deleteUrlDB(id){
